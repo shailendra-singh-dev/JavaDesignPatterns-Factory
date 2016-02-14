@@ -1,6 +1,7 @@
-package com.itexico.model;
+package com.shail.model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,21 +9,19 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class MySQLPersonDAO implements IPersonDAO {
+public class OracleLogDAO implements ILogDAO {
 
   /* (non-Javadoc)
-   * @see com.itexico.model.IPersonDAP#addPerson(com.itexico.model.Person)
+   * @see com.shail.model.ILogDAO#addLog(com.shail.model.Log)
    */
   @Override
-  public void addPerson(final Person person) {
+  public void addLog(final Log log) {
     Connection connection = Database.getInstance().getConnection();
     PreparedStatement preparedStatement = null;
     try {
-      preparedStatement =
-          connection.prepareStatement("insert into person(name,password) values(?,?)");
-      preparedStatement.setString(1, person.getName());
-      preparedStatement.setString(2, person.getPassword());
+      preparedStatement = connection.prepareStatement("insert into log(date,message) values(?,?)");
+      preparedStatement.setDate(1, log.getDate());
+      preparedStatement.setString(2, log.getMessage());
       preparedStatement.executeUpdate();
       preparedStatement.close();
     } catch (SQLException e) {
@@ -30,35 +29,24 @@ public class MySQLPersonDAO implements IPersonDAO {
     }
   }
 
-
   /* (non-Javadoc)
-   * @see com.itexico.model.IPersonDAP#getPerson(int)
+   * @see com.shail.model.ILogDAO#getLog()
    */
   @Override
-  public Person getPerson(int id) {
-    return null;
-  }
-
-  /* (non-Javadoc)
-   * @see com.itexico.model.IPersonDAP#getPeople()
-   */
-  @Override
-  public List<Person> getPeople() throws SQLException {
-    List<Person> people = new ArrayList<Person>();
+  public List<Log> getLog() throws SQLException {
+    List<Log> people = new ArrayList<Log>();
     Connection conn = Database.getInstance().getConnection();
 
-    String sql = "select id, name, password from people order by id";
+    String sql = "select id, date, message from log order by id";
     Statement selectStatement = conn.createStatement();
-
     ResultSet results = selectStatement.executeQuery(sql);
-
     while (results.next()) {
       int id = results.getInt("id");
-      String name = results.getString("name");
-      String password = results.getString("password");
+      Date date = results.getDate("date");
+      String message = results.getString("message");
 
-      Person person = new Person(id, name, password);
-      people.add(person);
+      Log log = new Log(id, date, message);
+      people.add(log);
     }
 
     results.close();
@@ -68,40 +56,36 @@ public class MySQLPersonDAO implements IPersonDAO {
   }
 
   /* (non-Javadoc)
-   * @see com.itexico.model.IPersonDAP#updatePerson(com.itexico.model.Person)
+   * @see com.shail.model.ILogDAO#updateLog(com.shail.model.Log)
    */
   @Override
-  public int updatePerson(Person person) {
+  public int updateLog(Log log) {
     Connection conn = Database.getInstance().getConnection();
     int updated = 0;
     PreparedStatement p;
     try {
-      p = conn.prepareStatement("update people set name=?, password=? where id=?");
-      p.setString(1, person.getName());
-      p.setString(2, person.getPassword());
-      p.setInt(3, person.getID());
-
+      p = conn.prepareStatement("update log set date=?, message=? where id=?");
+      p.setDate(1, log.getDate());
+      p.setString(2, log.getMessage());
+      p.setInt(3, log.getId());
       updated = p.executeUpdate();
-
       p.close();
     } catch (SQLException e) {
       e.printStackTrace();
     }
-
     return updated;
-
   }
 
   /* (non-Javadoc)
-   * @see com.itexico.model.IPersonDAP#deletePerson(int)
+   * @see com.shail.model.ILogDAO#deleteLog(int)
    */
   @Override
-  public int deletePerson(int id) {
+  public int deleteLog(int id) {
     Connection conn = Database.getInstance().getConnection();
     int updated = 0;
     PreparedStatement p;
     try {
-      p = conn.prepareStatement("delete from people where id=?");
+      p = conn.prepareStatement("delete from log where id=?");
       p.setInt(1, id);
 
       updated = p.executeUpdate();
@@ -114,7 +98,7 @@ public class MySQLPersonDAO implements IPersonDAO {
   }
 
   /* (non-Javadoc)
-   * @see com.itexico.model.IPersonDAP#deleteAll()
+   * @see com.shail.model.ILogDAO#deleteAll()
    */
   @Override
   public int deleteAll() {
@@ -122,7 +106,7 @@ public class MySQLPersonDAO implements IPersonDAO {
     int updated = 0;
     PreparedStatement p;
     try {
-      p = conn.prepareStatement("delete from people ");
+      p = conn.prepareStatement("delete from log");
 
       updated = p.executeUpdate();
 
@@ -132,5 +116,7 @@ public class MySQLPersonDAO implements IPersonDAO {
     }
     return updated;
   }
+
+
 
 }

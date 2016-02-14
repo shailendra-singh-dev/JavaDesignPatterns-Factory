@@ -1,4 +1,4 @@
-package com.itexico.model;
+package com.shail.model;
 
 import static org.junit.Assert.fail;
 
@@ -13,7 +13,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.itexico.application.factory.DAOFactory;
+import com.shail.application.factory.DAOFactory;
+import com.shail.model.Database;
+import com.shail.model.IPersonDAO;
+import com.shail.model.Person;
 
 public class PersonDAOTest {
 

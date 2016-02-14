@@ -1,19 +1,19 @@
-package com.itexico.controller;
+package com.shail.controller;
 
 import java.sql.Date;
 
 import javax.security.auth.spi.LoginModule;
 import javax.xml.bind.DataBindingException;
 
-import com.itexico.application.factory.DAOFactory;
-import com.itexico.model.ILogDAO;
-import com.itexico.model.IPersonDAO;
-import com.itexico.model.Log;
-import com.itexico.model.Model;
-import com.itexico.model.Person;
-import com.itexico.view.LoginFormEvent;
-import com.itexico.view.View;
-import com.itexico.view.View.IAccountCreatedListener;
+import com.shail.application.factory.DAOFactory;
+import com.shail.model.ILogDAO;
+import com.shail.model.IPersonDAO;
+import com.shail.model.Log;
+import com.shail.model.Model;
+import com.shail.model.Person;
+import com.shail.view.LoginFormEvent;
+import com.shail.view.View;
+import com.shail.view.View.IAccountCreatedListener;
 
 public class Controller implements IAccountCreatedListener {
   private View mView;

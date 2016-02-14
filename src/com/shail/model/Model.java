@@ -1,4 +1,4 @@
-package com.itexico.model;
+package com.shail.model;
 
 public class Model {
 

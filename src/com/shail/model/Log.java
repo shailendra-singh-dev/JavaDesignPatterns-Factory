@@ -1,4 +1,4 @@
-package com.itexico.model;
+package com.shail.model;
 
 import java.sql.Date;
 

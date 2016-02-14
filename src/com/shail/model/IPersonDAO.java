@@ -1,4 +1,4 @@
-package com.itexico.model;
+package com.shail.model;
 
 import java.sql.SQLException;
 import java.util.List;

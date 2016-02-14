@@ -1,4 +1,4 @@
-package com.itexico.view;
+package com.shail.view;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -15,9 +15,9 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import com.itexico.model.Database;
-import com.itexico.model.Model;
-import com.itexico.model.Person;
+import com.shail.model.Database;
+import com.shail.model.Model;
+import com.shail.model.Person;
 
 public class View extends JFrame implements ActionListener {
 

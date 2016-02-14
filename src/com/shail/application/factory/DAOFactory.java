@@ -1,9 +1,9 @@
-package com.itexico.application.factory;
+package com.shail.application.factory;
 
-import com.itexico.model.ILogDAO;
-import com.itexico.model.IPersonDAO;
-import com.itexico.model.MySQLLogDAO;
-import com.itexico.model.MySQLPersonDAO;
+import com.shail.model.ILogDAO;
+import com.shail.model.IPersonDAO;
+import com.shail.model.MySQLLogDAO;
+import com.shail.model.MySQLPersonDAO;
 
 public final class DAOFactory {
 

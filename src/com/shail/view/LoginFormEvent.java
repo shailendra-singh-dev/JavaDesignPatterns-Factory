@@ -1,4 +1,4 @@
-package com.itexico.view;
+package com.shail.view;
 
 public class LoginFormEvent {
 	private String name;

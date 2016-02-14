@@ -1,10 +1,10 @@
-package com.itexico.application;
+package com.shail.application;
 
 import javax.swing.SwingUtilities;
 
-import com.itexico.controller.Controller;
-import com.itexico.model.Model;
-import com.itexico.view.View;
+import com.shail.controller.Controller;
+import com.shail.model.Model;
+import com.shail.view.View;
 
 public class Application {
 
