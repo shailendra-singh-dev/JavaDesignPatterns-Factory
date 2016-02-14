@@ -44,9 +44,9 @@ public class PersonDAOTest {
     fail("Not yet implemented");
     IPersonDAO personDAO = DAOFactory.getInstance().getPersonDAO();
 
-    Person person1 = new Person(111, "Shail", "shail");
+    Person person1 = new Person(111, "person1-name", "person1-password");
     personDAO.addPerson(person1);
-    Person person2 = new Person(111, "Swati", "swati");
+    Person person2 = new Person(111, "person2-name", "person2-password");
     personDAO.addPerson(person2);
 
     personDAO.addPerson(person1);
